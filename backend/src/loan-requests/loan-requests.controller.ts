@@ -11,9 +11,11 @@ export class LoanRequestsController {
 
   @Get()
   findAll() {
+    
     // TODO BACK-A: recibir la consulta con @Query, validarla con el pipe y pasar el filtro.
-    return this.service.findAll();
-  }
+    return this.service.findAll(@Query(requestValidationPipe) query: LoanRequestDto);
+  } 
+
 
   @Get(":id")
   findOne(@Param("id", ParseIntPipe) id: number) {
