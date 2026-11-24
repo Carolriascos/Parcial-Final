@@ -15,7 +15,7 @@ export default async function ReceiptPage({ params }: ReceiptPageProps) {
   const response = await apiFetch(`/loan-requests/${encodeURIComponent(id)}`);
   if (!response.ok) notFound();
 
-  const request: Tool | null = await response.json().catch(() => null);
+  const request: loan-requests | null = await response.json().catch(() => null);
   if (!request) notFound();
 
 

@@ -14,7 +14,7 @@ export class LoanRequestsController {
   findAll(@Query(requestValidationPipe) query: ListLoanRequestsDto) {
     
     // TODO BACK-A: recibir la consulta con @Query, validarla con el pipe y pasar el filtro.
-    return this.service.findAll(query.status);
+    return this.service.findAll(query.toolId);
   } 
 
 

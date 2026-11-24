@@ -16,7 +16,7 @@ async function createLoanRequest(formData: FormData) {
 
 export default async function NewLoanRequestPage() {
   const response = await apiFetch("/tools");
-  const tools: Tool[] = response.ok ? await response.json() : [];
+  const tools: loan-requests[] = response.ok ? await response.json() : [];
 
   return (
     <main>
