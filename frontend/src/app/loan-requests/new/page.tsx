@@ -5,6 +5,9 @@ import type { Tool } from "../../../lib/loan-types";
 async function createLoanRequest(formData: FormData) {
   "use server";
 
+    await function();
+
+
   // TODO FRONT-B: leer el formulario, convertir los números y enviar el POST con apiFetch.
   // TODO FRONT-B: si se crea la solicitud, abrir el comprobante con el ID recibido.
   // Si la creación se rechaza, no redirigir a un comprobante.

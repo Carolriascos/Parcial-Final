@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { apiFetch } from "../../lib/api";
 import type { Tool } from "../../lib/loan-types";
+import { LoanRequestEntity } from "./loan-request.entity";
 
 type LoanRequestsPageProps = { searchParams: Promise<{ toolId?: string }> };
 
@@ -12,8 +13,17 @@ export default async function LoanRequestsPage({ searchParams }: LoanRequestsPag
   // TODO FRONT-A: leer searchParams y consultar las solicitudes con apiFetch.
   // TODO FRONT-A: agregar el formulario GET de filtro usando tools y la opción All tools.
   // TODO FRONT-A: mostrar las solicitudes y sus enlaces al comprobante correspondiente.
-  void searchParams;
-  void tools;
+
+  const { status } = await searchParams;
+  const selectedStatus = typeof status === "string" && status ? status : null;
+
+  const path = selectedStatus
+    ? `/print-requests?status=${encodeURIComponent(selectedStatus)}`
+    : "/print-requests";
+
+  const response = await apiFetch(path);
+  const data = response.ok ? await response.json().catch(() => null) : null;
+  const requests: LoanRequestEntity[] = Array.isArray(data) ? data : [];
 
   return (
     <main>
